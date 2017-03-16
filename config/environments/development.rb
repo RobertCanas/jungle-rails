@@ -38,8 +38,17 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { :address => "localhost", :port => 587 }
+  config.action_mailer.smtp_settings = {
+    :address          => "smtp-mail.outlook.com",
+    :port             => 587,
+    :user_name        => ENV['HOTMAIL_USERNAME'],
+    :password         => ENV['HOTMAIL_PASSWORD'],
+    :authentication   => "plain",
+  :enable_starttls_auto => true
+  }
 
 
   config.web_console.whitelisted_ips = ['10.0.2.0/24']
