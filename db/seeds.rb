@@ -134,10 +134,33 @@ cat3.products.create!({
 
 ## USERS
 
+User.create!({
+  name: 'Robert',
+  email: 'robert_canas@hotmail.com',
+  password: 'test123'
+})
+
+User.create!({
+  name: 'TestBot9000',
+  email: 'testbot@hotmail.com',
+  password: 'testing123'
+})
 
 ## REVIEWS
 
+Review.create!({
+  product_id: 1,
+  user_id: 1,
+  description: "This product is very good.",
+  rating: 5
+})
 
+Review.create!({
+  product_id: 1,
+  user_id: 2,
+  description: "This product is sucks.",
+  rating: 1
+})
 
 
 puts "DONE!"
