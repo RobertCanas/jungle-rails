@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-
+  before_filter :auth
   def create
     @review = Review.new
     @review.product_id = params[:product_id].to_i
@@ -15,6 +15,13 @@ class ReviewsController < ApplicationController
 
   end
 
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to product_path(id: params[:product_id])
+  end
+
+
   private
 
   def review_params
@@ -22,6 +29,13 @@ class ReviewsController < ApplicationController
       :description,
       :rating
     )
+  end
+
+  def auth
+    if session[:user_id]
+      return true
+    end
+    false
   end
 
 end

@@ -40,11 +40,18 @@
       <p> Rating: <%= review.rating %></p>
       <p> Reviewer: <%= User.find(review.user_id).name %></p>
       <p> <%= review.description %> </p>
+      <% if current_user && current_user.id == review.user_id %>
+      <%= link_to fa_icon('trash'),
+              product_review_path(product_id: review.product_id, id: review.id),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+      <% end %>
     </div>
     <% end %>
   </article>
 </section>
 
+<% if current_user %>
 <section class="product-reviews-form">
   <article class="panel panel-default">
     <div class="panel-heading">
@@ -65,3 +72,4 @@
     <% end %>
   </article>
 </section>
+<% end %>
