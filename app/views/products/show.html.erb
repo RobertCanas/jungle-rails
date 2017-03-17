@@ -44,3 +44,24 @@
     <% end %>
   </article>
 </section>
+
+<section class="product-reviews-form">
+  <article class="panel panel-default">
+    <div class="panel-heading">
+      <h3>Create Reviews</h3>
+    </div>
+    <%= form_for ([@product, @review]) do |f| %>
+    <div class="product-review-form panel-body">
+      <div class="form-group">
+        <%= f.label :rating %>
+        <%= f.select :rating, options_for_select([1, 2, 3, 4, 5]) %>
+      </div>
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_field :description, class: 'form-control' %>
+      </div>
+      <%= f.submit 'Create Review', class: 'btn btn-primary' %>
+    </div>
+    <% end %>
+  </article>
+</section>
