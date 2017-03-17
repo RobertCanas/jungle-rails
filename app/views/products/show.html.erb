@@ -29,3 +29,18 @@
   </article>
 
 </section>
+
+<section class="product-reviews">
+  <article class="panel panel-default">
+    <div class="panel-heading">
+      <h2>Product Reviews</h2>
+    </div>
+    <% @product.reviews.each do |review| %>
+    <div class="product-review panel-body">
+      <p> Rating: <%= review.rating %></p>
+      <p> Reviewer: <%= User.find(review.user_id).name %></p>
+      <p> <%= review.description %> </p>
+    </div>
+    <% end %>
+  </article>
+</section>
